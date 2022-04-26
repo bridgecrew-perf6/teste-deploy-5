@@ -1,7 +1,10 @@
-const simpleGit = require('simple-git');
+const git = require('simple-git');
 
-simpleGit()
-   .init()
-   .add('.')
-   .commit("first commit!")
-   .push('origin', 'main');
+async function deploy() {   
+   await git().checkout('deploy')
+   await git().add('.')
+   await git().commit("first commit!")
+   await git().push('origin','deploy');
+}
+
+deploy()
